@@ -19,7 +19,7 @@ void enter_data_for_point(point& dot, int& count);
 bool does_point_belong_to_figure(const point& dot, const figure& space);
 
 void enter_a_figure(const char name, figure& result) {
-    cout << "Введи число от 1 до 2:" << endl << "1 - Ввести фигиру " << name << "." << endl << "2 - Завершить программу" << endl;
+    cout << "Введи 1 или 2:" << endl << "1 - Ввести фигиру " << name << "." << endl << "2 - Завершить программу" << endl;
     string input_str;
     cin >> input_str;
     try {
