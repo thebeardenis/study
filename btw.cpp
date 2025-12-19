@@ -1,32 +1,59 @@
 #include <iostream>
-#include <cmath>
+#include <fstream>
 using namespace std;
 
 int main()
 {
+    srand(time(nullptr));
 
-    string A, B;
+    int mass[20];
 
-    cout << "Введите строку A" << endl;
-    getline(cin, A);
+    for (int i=0; i<20; i++) {
+        mass[i] = -100000 + (rand() % (200001));
+    }
 
-    cout << "Введите строку B" << endl;
-    getline(cin, B);
+    sort(&mass[0], &mass[20]);
 
-    string tmp_A;
-    for (const char i : A) {
-        int counter = 0;
-        for (const char j : B) {
-            if (i != j) {
-                counter++;
+    ofstream data("data_for_lab.txt");
+    for (int i=0; i<20; i++) {
+        data << to_string(mass[i]) << endl;
+    }
+    data.close();
+
+    int my_num;
+    cin >> my_num;
+
+    ifstream in_f("data_for_lab.txt");
+    string file_content;
+
+    bool isEnter = false;
+    bool isFirst = true;
+    string line_f;
+    int last_n;
+    while (std::getline(in_f, line_f)) {
+        int n = stoi(line_f);
+        if (!isEnter) {
+            if (isFirst) {
+                if (my_num < n) {
+                    file_content += to_string(my_num) + "\n";
+                    isEnter =true;
+                }
+                isFirst = false;
+            }
+            if (my_num > last_n && my_num <= n) {
+                file_content += to_string(my_num) + "\n";
+                isEnter = true;
             }
         }
-        if (counter == B.length()) {
-            tmp_A += i;
-        }
+        file_content += line_f + "\n";
+        last_n = n;
     }
-    A = tmp_A;
-    cout << A << endl;
+    if (!isEnter) file_content += to_string(my_num) + "\n";
+    in_f.close();
+
+    ofstream out_f("data_for_lab.txt");
+    out_f << file_content;
+    out_f.close();
 
     return 0;
 }

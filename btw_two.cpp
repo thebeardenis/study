@@ -1,32 +1,60 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-int bin(int x) {
-    int binary_x = 0;
-    int i = 1;
-    while (x != 0) {
-        binary_x += (x%2) * i;
-        x = x / 2;
-        i *= 10;
+class Person {
+public:
+    string FIO;
+    string address;
+    string phone_number;
+    void print_data_on_first_digits(const string &digits) const {
+        bool havePlus = false;
+        if (this->phone_number[0] == *"+") {
+            havePlus = true;
+        }
+        bool isGood = true;
+        for (int i=0; i<digits.length(); i++) {
+            if (havePlus) {
+                if (this->phone_number[i+1] != digits[i]) {
+                    isGood = false;
+                }
+            } else {
+                if (this->phone_number[i] != digits[i]) {
+                    isGood = false;
+                }
+            }
+        }
+        if (isGood) {
+            cout << "Person data:" << endl;
+            cout << "name: " << FIO << endl;
+            cout << "address: " << address << endl;
+            cout << "phone number: " << phone_number << endl << endl;
+        }
     }
-
-    return binary_x;
-}
+};
 
 int main() {
 
-    int a,b,c;
-    cout << "Введите a:" << endl;
-    cin >> a;
-    cout << "Введите b:" << endl;
-    cin >> b;
-    cout << "Введите c:" << endl;
-    cin >> c;
+    Person people[5];
+    for (int i=0; i<5; i++) {
+        Person tmp;
+        cout << "Enter name: ";
+        getline(cin, tmp.FIO);
+        cout << "Enter address: ";
+        getline(cin, tmp.address);
+        cout << "Enter phone: ";
+        getline(cin, tmp.phone_number);
+        people[i] = tmp;
+        cout << endl;
+    }
 
-    cout << a << " " <<  bin(a) << endl;
-    cout << b << " " << bin(b) << endl;
-    cout << c << " " << bin(c) << endl;
+    while (true) {
+        string digits;
+        cout << "Enter first three digits phone number: ";
+        cin >> digits;
+        for (int i=0; i<5; i++) {
+            people[i].print_data_on_first_digits(digits);
+        }
+    }
 
     return 0;
 }
