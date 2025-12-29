@@ -27,7 +27,7 @@ public:
             cout << "Person data:" << endl;
             cout << "name: " << FIO << endl;
             cout << "address: " << address << endl;
-            cout << "phone number: " << phone_number << endl << endl;
+            cout << "a 0phone number: " << phone_number << endl << endl;
         }
     }
 };

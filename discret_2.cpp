@@ -44,7 +44,6 @@ void enter_a_figure(const char name, figure& result) {
     cin >> input_str;
     try {
         int input = stoi(input_str);
-        system("clear");
         if (input == 1) {
             select_figure_type(result);
         } else if (input == 2) {
@@ -64,7 +63,6 @@ void main_select(point& dot, figure& A, figure& B, figure& C, figure& D) {
     cin >> input_str;
     try {
         const int input = stoi(input_str);
-        system("clear");
         if (input == 1) {
             int counter = 0;
             enter_point_data(dot, counter);
@@ -96,7 +94,6 @@ void select_figure_type(figure& result) {
     cin >> input_str;
     try {
         const int input = stoi(input_str);
-        system("clear");
         int counter =0;
         if (input == 1) {
             result.isCircle = true;
@@ -118,7 +115,6 @@ void enter_point_data(point& dot, int& count) {
             string x_str;
             cout << "Введите x:" << endl;
             cin >> x_str;
-            system("clear");
             const double x = stod(x_str);
             dot.x = x;
             count++;
@@ -128,7 +124,6 @@ void enter_point_data(point& dot, int& count) {
             string y_str;
             cout << "Введите y:" << endl;
             cin >> y_str;
-            system("clear");
             const double y = stod(y_str);
             dot.y = y;
             count++;
@@ -146,7 +141,6 @@ void enter_figur_data(figure& result, int& counter) {
             string x0_str;
             cout << "Введите x0:" << endl;
             cin >> x0_str;
-            system("clear");
             const double x0 = stod(x0_str);
             result.x0 = x0;
             counter++;
@@ -156,7 +150,6 @@ void enter_figur_data(figure& result, int& counter) {
             string y0_str;
             cout << "Введите y0:" << endl;
             cin >> y0_str;
-            system("clear");
             const double y0 = stod(y0_str);
             result.y0 = y0;
             counter++;
@@ -166,7 +159,6 @@ void enter_figur_data(figure& result, int& counter) {
                 string radius_str;
                 cout << "Ведите radius:" << endl;
                 cin >> radius_str;
-                system("clear");
                 const double radius = stod(radius_str);
                 result.radius = radius;
                 counter++;
@@ -176,7 +168,6 @@ void enter_figur_data(figure& result, int& counter) {
                 string width_str;
                 cout << "Введите width:" << endl;
                 cin >> width_str;
-                system("clear");
                 const double width = stod(width_str);
                 result.width = width;
                 counter++;
@@ -186,7 +177,6 @@ void enter_figur_data(figure& result, int& counter) {
                 string height_str;
                 cout << "Введите height:" << endl;
                 cin >> height_str;
-                system("clear");
                 const double height = stod(height_str);
                 result.height = height;
                 counter++;

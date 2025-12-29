@@ -53,7 +53,6 @@ void view_matrix_of_incidence(int** matrix, const int n, const int count_edges, 
     select_type_matrix(matrix, n);
 }
 void view_incidence_list(int** matrix, const int n, const int count_edges, int** edges) {
-    system("clear");
     for (int i=0; i<count_edges; i++) {
         cout << "[" << *(*(edges + i)) << ", " << *(*(edges + i) + 1) << "]" << endl;
     }
@@ -61,7 +60,6 @@ void view_incidence_list(int** matrix, const int n, const int count_edges, int**
     select_type_matrix(matrix, n);
 }
 void view_adjacency_list(int** matrix, const int n) {
-    system("clear");
     for (int i=1; i<n; i++) {
         bool isFirst = true;
         cout << i << ": ";
@@ -78,7 +76,6 @@ void view_adjacency_list(int** matrix, const int n) {
     select_type_matrix(matrix, n);
 }
 void view_matrix_of_adjacency(int** matrix, const int n) {
-    system("clear");
     for (int i=0; i<n; i++) {
         for (int j=0; j<n; j++) {
             cout << *(*(matrix + i) + j) << " ";
@@ -102,7 +99,6 @@ void fill_matrix(int** matrix, const int& n, int& filled_node_counter) {
                     *(*(matrix + i) + j) = input;
                     *(*(matrix + j) + i) = input;
                     filled_node_counter++;
-                    system("clear");
                 } catch (...) {
                     system("clear");
                     cout << "Неправильно введённые данные. Попробуйте снова." << endl;
@@ -119,7 +115,6 @@ void select_type_matrix(int** matrix, const int n) {
     cin >> input_str;
     try {
         int input = stoi(input_str);
-        system("clear");
         if (input < 6 && input > 0) {
             if (input == 4) {
                 view_adjacency_list(matrix, n);
@@ -180,10 +175,8 @@ void enter_graph_on_terminal() {
             *(*(matrix) + i) = i;
         }
         int filled_node_counter = 0;
-        system("clear");
         fill_matrix(matrix, matrix_dimensions, filled_node_counter);
 
-        system("clear");
         select_type_matrix(matrix, matrix_dimensions);
     } catch (...) {
         system("clear");
@@ -226,13 +219,11 @@ void enter_graph_on_file() {
                 p++;
             } while (getline(matrix_file, tmp_line));
         } else {
-            system("clear");
             cout << "Такого файла нету в данной директории." << endl;
             enter_graph_on_file();
         }
         matrix_file.close();
         if (matrix == nullptr) throw invalid_argument("Неполучилось считать матрицу из файла.");
-        system("clear");
         select_type_matrix(matrix, matrix_dimensions);
     } catch (...) {
         system("clear");
@@ -247,10 +238,8 @@ void select_data_from_terminal_or_file() {
     try {
         const int input = stoi(input_str);
         if (input == 1) {
-            system("clear");
             enter_graph_on_terminal();
         } else if (input == 2) {
-            system("clear");
             enter_graph_on_file();
         } else throw invalid_argument("");
     } catch (...) {
